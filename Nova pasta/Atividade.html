@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  background-color: #3245;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  display: flex;
+}
+
+/* Container for flexboxes */
+.row {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Create three equal columns that sits next to each other */
+.column {
+  flex: 1;
+  padding: 10px;
+  height: 150px; 
+  text-align: center;/* Should be removed. Only for demonstration */
+}
+.columnA {
+  flex: 2;
+  padding: 10px;
+  height: 150px; 
+  text-align: center;/* Should be removed. Only for demonstration */
+}
+.columnB {
+  flex: 1;
+  padding: 10px;
+  height: 500px; 
+  text-align: center;/* Should be removed. Only for demonstration */
+}
+
+.columnC {
+
+  
+  height: 90px; 
+  
+}
+
+/* Style the footer */
+.footer {
+  display: flex;
+    flex:2;
+  background-color: #2345;
+  padding: 10px;
+ 
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .row {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+
+<div class="header">
+  <div class="column" style= "background-image:url(SI_bliss_site.webp);
+    background-size: cover; background-position: center;"></div>
+
+  <div class="columnA" style="background-image:url(marca-if-baiano-completa.png);
+    background-size: cover; background-position: center;"></div>
+
+  <div class="column" style= "background-image:url(Instituto_Federal_Baiano_-_Marca_Vertical_2015.svg.png);
+background-size: contain; background-position: center; background-repeat: no-repeat; " ></div>
+
+</div>
+
+<div class="row">
+  <div class="columnB"style= "background-color: lightgreen;">
+<form action="/action_page.php" method="get">
+  <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+  <label for="vehicle1"> Matutino</label><br>
+  <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+  <label for="vehicle2"> Vespetino</label><br>
+  <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+  <label for="vehicle3"> Integrado</label><br><br>
+  <input type="submit" value="Concluir">
+</form> 
+  </div>
+
+  <div class="columnB"style= "background-color:lightgreen;">
+    <form action="/action_page.php" method="get">
+  <label for="fname">Nome:</label><br>
+  <input type="text" id="fname" name="fname" value="Fulano"><br>
+  <label for="lname">Sobrenome:</label><br>
+  <input type="text" id="lname" name="lname" value="de Tal"><br><br>
+  <input type="submit" value="Concluir">
+</form> 
+
+
+
+  </div>
+
+  <div class="columnB"style= "background-color:lightgreen;">
+<form action="/action_page.php" method="get">
+  <label for="cargo">Função:</label>
+  <select id="cargo" name="cargo">
+    <option value="dicen">Discente</option>
+    <option value="docen">Doscente</option>
+    <option value="dire">Diretor</option>
+    <option value="assis">Assistente</option>
+  </select>
+  <input type="submit">
+</form>
+  </div>
+ 
+
+</div>
+
+<div class="footer">
+  <div class="column" style= "background-color:lightgreen;">Sobre</div>
+  <div class="columnA">
+   <img src="logo-vermelho-do-youtube-logo-de-midia-social_197792-1803.avif" alt="sla" height="90">
+    <img src="icone-do-instagram-de-logotipo-de-distintivo-moderno_578229-124.avif" alt="sla" height="90">
+    <img src="fdafdfdf.png" alt="sla" height="90">
+    <img src="Dimensoes-Wordpress-1500-×-1000-px-7.webp" alt="sla" height="90">
+  </div>
+
+
+</body>
+</html>
