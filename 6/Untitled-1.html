@@ -1,0 +1,279 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clima — Itapetinga</title>
+  <style>
+    :root{
+      --bg1: #0f172a;
+      --bg2: #0b2038;
+      --card: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.06);
+      --accent: #47b5ff;
+      --text: #e6eef8;
+      --muted: #9fb0c8;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      min-height:100vh;
+      margin:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 60%);
+      color:var(--text);
+      padding:24px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:920px;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:22px;
+      align-items:start;
+    }
+
+    @media (max-width:880px){
+      .wrap{grid-template-columns:1fr; padding:12px}
+    }
+
+    .hero{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:22px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .top{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:12px;
+    }
+
+    .logo{
+      width:64px;height:64px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      background: linear-gradient(135deg,var(--accent),#7be0ff);
+      color:#042033;font-weight:700;font-size:20px;
+      box-shadow: 0 6px 18px rgba(71,181,255,0.12);
+    }
+
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted);font-size:13px}
+
+    .main-info{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+
+    .big-temp{
+      font-size:64px;
+      font-weight:700;
+      line-height:1;
+    }
+
+    .small{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .weather-icon{
+      width:120px;height:120px;border-radius:20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .details{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+      margin-top:16px;
+    }
+
+    .card{
+      background:var(--card);
+      padding:12px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.02);
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .aside{
+      position:relative;
+    }
+
+    .map-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);
+      height:100%;
+      display:flex;flex-direction:column;gap:12px;
+      align-items:stretch;
+    }
+
+    .search{
+      display:flex;gap:8px;
+    }
+
+    .btn{
+      background:var(--accent);color:#042033;border:none;padding:10px 12px;border-radius:8px;
+      font-weight:600;cursor:pointer;
+      box-shadow:0 6px 18px rgba(71,181,255,0.12);
+    }
+
+    footer{margin-top:12px;color:var(--muted);font-size:13px}
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;gap:8px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="hero">
+      <div class="top">
+        <div class="logo">IT</div>
+        <div>
+          <h1>Previsão do tempo — Itapetinga, BA</h1>
+          <p class="lead">Dados em tempo real — OpenWeatherMap</p>
+        </div>
+      </div>
+
+      <div class="main-info">
+        <div>
+          <div class="big-temp" id="temp">--°C</div>
+          <div class="small" id="desc">Carregando...</div>
+          <div style="margin-top:8px" class="small">Última atualização: <span id="updated">--</span></div>
+        </div>
+
+        <div class="weather-icon" id="iconWrap">
+          <!-- ícone -->
+          <img id="icon" src="" alt="" style="width:88px;height:88px">
+        </div>
+
+      </div>
+
+      <div class="details" style="margin-top:18px">
+        <div class="card center">
+          <div><strong id="feels">--</strong></div>
+          <div class="muted">Sensação térmica</div>
+        </div>
+        <div class="card center">
+          <div><strong id="hum">--</strong></div>
+          <div class="muted">Umidade</div>
+        </div>
+        <div class="card center">
+          <div><strong id="wind">--</strong></div>
+          <div class="muted">Vento</div>
+        </div>
+        <div class="card center">
+          <div><strong id="pressure">--</strong></div>
+          <div class="muted">Pressão</div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="muted">Observação: substitua <code>YOUR_OPENWEATHERMAP_API_KEY</code> no script pela sua chave.</div>
+      </footer>
+    </main>
+
+    <aside class="aside">
+      <div class="map-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:700">Itapetinga — Bahia</div>
+            <div class="muted" style="font-size:13px">Lat: <span id="lat">-15.2489</span> • Lon: <span id="lon">-40.2478</span></div>
+          </div>
+          <button class="btn" id="refresh">Atualizar</button>
+        </div>
+
+        <div style="flex:1;display:flex;align-items:center;justify-content:center">
+          <!-- mapa estático via OpenStreetMap (iframe) -->
+          <iframe
+            id="map"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-40.32,-15.32,-40.17,-15.18&layer=mapnik&marker=-15.2489,-40.2478"
+            style="width:100%;height:260px;border:0;border-radius:8px;box-shadow:0 8px 30px rgba(2,6,23,0.5)"
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:space-between;align-items:center">
+          <div class="muted" style="font-size:13px">Fonte: OpenWeatherMap • OpenStreetMap</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    // Coordenadas de Itapetinga (padrão)
+    const LAT = -15.2489;
+    const LON = -40.2478;
+    // Substitua pela sua chave:
+    const API_KEY = "YOUR_OPENWEATHERMAP_API_KEY";
+
+    const elements = {
+      temp: document.getElementById('temp'),
+      desc: document.getElementById('desc'),
+      updated: document.getElementById('updated'),
+      icon: document.getElementById('icon'),
+      feels: document.getElementById('feels'),
+      hum: document.getElementById('hum'),
+      wind: document.getElementById('wind'),
+      pressure: document.getElementById('pressure'),
+      lat: document.getElementById('lat'),
+      lon: document.getElementById('lon'),
+      refresh: document.getElementById('refresh'),
+      map: document.getElementById('map')
+    };
+
+    elements.lat.textContent = LAT;
+    elements.lon.textContent = LON;
+
+    async function fetchWeather(lat = LAT, lon = LON) {
+      if (!API_KEY || API_KEY === "YOUR_OPENWEATHERMAP_API_KEY") {
+        elements.desc.textContent = "Insira sua API key no arquivo (veja comentário).";
+        return;
+      }
+
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&appid=${API_KEY}`;
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Resposta de rede não OK: ' + res.status);
+        const data = await res.json();
+
+        // atualizar UI
+        elements.temp.textContent = `${Math.round(data.main.temp)}°C`;
+        elements.desc.textContent = `${data.weather[0].description}`;
+        elements.updated.textContent = new Date(data.dt * 1000).toLocaleString();
+        elements.icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+        elements.icon.alt = data.weather[0].description;
+
+        elements.feels.textContent = `${Math.round(data.main.feels_like)}°C`;
+        elements.hum.textContent = `${data.main.humidity}%`;
+        elements.wind.textContent = `${(data.wind.speed).toFixed(1)} m/s`;
+        elements.pressure.textContent = `${data.main.pressure} hPa`;
+
+      } catch (err) {
+        elements.desc.textContent = "Erro ao obter dados: " + err.message;
+        console.error(err);
+      }
+    }
+
+    elements.refresh.addEventListener('click', () => fetchWeather());
+
+    // carregar ao abrir
+    fetchWeather();
+  </script>
+</body>
+</html>
+
+
